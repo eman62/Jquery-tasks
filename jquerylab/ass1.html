@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>task1</title>
+        <style>
+        .sidebar {
+            background-color: lightgray;
+            padding: 20px;
+            width: 70px; 
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden; 
+            transition: width 0.3s; 
+        }
+
+        /* .sidebar:hover {
+            width: 200px;
+        } */
+        .change{
+          width: 200px;  
+        }
+           body{
+            margin: 0;
+            padding: 0;
+           }
+           button{
+            width: 70%;
+            height: 30px;
+            margin: 10px;
+            overflow: hidden;
+           }
+           h5{
+            display: none;
+            padding: 0px 20px;
+            background-color: gray;
+           }
+
+        </style>
+        <script src="jquery-3.7.1.js"></script>
+    </head>
+    <body>
+      
+            <div class="sidebar">
+                <button onclick="toggleText1()">title 1</button>
+                <h5 id="text1">text 1</h5>
+                <button onclick="toggleText2()">title 2</button>
+                <h5 id="text2">text 2</h5>
+            </div>
+        <script>
+            $(".sidebar").hover(function(){
+               $(this).toggleClass("change");
+            })
+            function toggleText1() {
+                    $("#text1").fadeToggle(1000);
+                }
+
+            function toggleText2() {
+                    $("#text2").fadeToggle(1000);
+                }   
+        </script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>task2</title>
+    <script src="jquery-3.7.1.js"></script>
+    <style>
+        a {
+            margin: 5px;
+            padding: 5px;
+            color: gray;
+            text-decoration: none;
+        }
+
+        div {
+            display: none;
+            background-color: lightgrey;
+            width: 700px;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .active {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <a >Tab One</a>
+    <a >Tab Two</a>
+    <a >Tab Three</a>
+    <a >Tab Four</a>
+
+    <div id="tab1" class="tab-content">tab 1</div>
+    <div id="tab2" class="tab-content">tab 2</div>
+    <div id="tab3" class="tab-content">tab 3</div>
+    <div id="tab4" class="tab-content">tab 4</div>
+
+    <script>
+        // $("div").hide();
+
+        $("a").click(function () {
+            
+            $("a").removeClass("active");
+
+            $("div").hide();
+
+            $(this).addClass("active");
+           
+            
+           var index = $(this).index();
+           console.log(index);
+    
+            $(`#tab${index+1}`).show();
+
+            
+        });
+    </script>
+</body>
+
+</html>

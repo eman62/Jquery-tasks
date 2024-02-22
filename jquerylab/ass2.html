@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>task 2</title>
+    <style>
+        div {
+            /* margin: 50px 10px; */
+            /* width: 20%; */
+            margin: 10px;
+            display: inline-block;
+            background-color: lightblue;
+            /* height: 300px; */
+            padding: 5px;
+            color: gray;
+
+        }
+
+        #tab1 {
+            background-color: lightgrey;
+            width: 70vw;
+            height: 50vh;
+            padding: 20px;
+            margin: 30px;
+        }
+
+        .active {
+            background-color: lightgray;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div id="name1"></div>
+    <div id="name2"></div>
+    <div id="name3"></div>
+    <div id="name4"></div>
+    <div id="name5"></div>
+    <div id="name6"></div>
+    <div id="name7"></div>
+    <div id="name8"></div>
+    <div id="name9"></div>
+    <div id="name10"></div>
+
+    <div id="tab1" class="tab-content"></div>
+    <script>
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/users",
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+
+                for (let i = 0; i < data.length; i++) {
+                    $(`#name` + `${i+1}`).text(data[i].name);
+
+                    $(`#name` + `${i+1}`).click(function () {
+                        $("#tab1").empty();
+
+                        $.ajax({
+                            url: `https://jsonplaceholder.typicode.com/posts?userId=${i+1}`,
+                            method: "GET",
+                            dataType: "json",
+                            success: function (data) {
+                                for (let i = 0; i < 5; i++) {
+                                    $("#tab1").append(`<p>* ${data[i].title}</p>`);
+                                }
+                                console.log(data);
+                            },
+                            error: function () {
+                                alert("user error")
+                            }
+                        });
+
+
+                    })
+                }
+                console.log(data[0].name);
+            },
+            error: function () {
+                alert("error")
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task1</title>
+    <script src="jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <input type="text"  name="username">
+    <button type="button" id="addButton">Add</button>
+    <div id="List"></div>
+
+  
+    <script>
+        $(document).ready(function () {
+            $("#addButton").click(function () {
+                var name = $("input").val();
+                if (name !== "") {
+                    var div = $(`<div>${name} <span class="delete">delete</span></div>`);
+                    div.find(".delete").click(function () {
+                        $(this).parent().remove();
+                    });
+                    $("#List").append(div);
+                    $("input").val("");
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
